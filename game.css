@@ -1,0 +1,505 @@
+body {
+    --bottom-buttons-padding: 1rem;
+    --bs-gutter-x: 2rem;
+    position: relative;
+    min-width: 375px;
+    height: 100vh;
+    background-color: #212529;
+    overflow-x: hidden;
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    max-height: 25vh;
+    overflow: auto
+}
+
+html {
+    background-color: #212529;
+}
+
+#title-bar {
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    justify-content: center;
+}
+
+#title-bar>a {
+    text-decoration: none;
+    color: white;
+}
+
+#canvas {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+@keyframes slidebg {
+    from {
+        background-position: 0;
+    }
+
+    to {
+        background-position: 100vw;
+    }
+}
+
+.rainbowBackground {
+    animation: slidebg 3s linear infinite;
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+}
+
+#defaultCanvas0 {
+    background-color: white;
+}
+
+.game-control {
+    color: white;
+    overflow-x: hidden;
+}
+
+.game-control label {
+    font-size: 20px;
+    font-weight: bold;
+    width: 200px;
+}
+
+.slider-control {
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-control>span,
+.slider-control>input {
+    margin: 0 1rem;
+}
+
+#fps-output,
+#box-size-output {
+    font-size: 20px;
+}
+
+#fps-slider {
+    text-align: center;
+}
+
+#color-control {
+    display: flex;
+    align-items: center;
+    min-width: 400px
+}
+
+
+.slider-label {
+    white-space: nowrap;
+
+}
+
+label[for=fps-slider] {
+    width: 200px;
+}
+
+.slider-control input {
+    width: 100%;
+
+}
+
+.game-control>div:first-child {
+    align-items: center;
+}
+
+.rainbow-button {
+    border: none;
+}
+
+.no-stroke-active {
+    border: 5px solid transparent !important;
+}
+
+#box-effect button {
+    border: 5px #323232 solid;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 6px 12px;
+    margin-right: 1rem;
+    line-height: normal;
+    margin-bottom: 0.5rem;
+}
+
+#title-bar img {
+    height: 37px;
+}
+
+#title-bar img:first-child {
+    animation: rotateImg 5s linear infinite;
+}
+
+#title-bar img:last-child {
+    transform: scaleX(-1);
+    animation: rotateImgReverse 5s linear infinite;
+}
+
+/* #title-bar:hover img:first-child {
+    animation: rotateImg 5s linear infinite;
+}
+
+#title-bar:hover img:last-child {
+    animation: rotateImgReverse 5s linear infinite;
+} */
+
+@keyframes rotateImg {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateImgReverse {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-90deg);
+    }
+
+    50% {
+        transform: rotate(-180deg);
+    }
+
+    75% {
+        transform: rotate(-270deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.gameplay-buttons {
+    width: 100%;
+    height: 100%;
+}
+
+
+.rainbow-button.active {
+    animation: slidebg 6s linear infinite;
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+}
+
+
+input[type=color],
+#color-control button {
+    margin: 0 2rem;
+    border-width: 2px;
+    padding: 0;
+    border-radius: 5px;
+    width: 50px;
+    border-color: white;
+}
+
+#color-control button {
+    margin: 0;
+    padding: 0 1rem;
+    font-size: 18px;
+    background-color: white;
+}
+
+.row {
+    height: fit-content;
+}
+
+.row>div {
+    padding-bottom: 1rem;
+}
+
+label,
+button {
+    white-space: nowrap;
+}
+
+#color-control label {
+    width: 150px;
+}
+
+@media only screen and (max-width: 1075px) {
+    .game-control>.row:first-child {
+        display: block;
+    }
+
+    .slider-label {
+        min-width: 200px;
+    }
+
+    .slider-control input {
+        padding: 0 auto;
+
+    }
+
+    #fps-slider,
+    #box-size {
+        margin-left: 100px
+    }
+
+}
+
+
+@media only screen and (max-width: 475px) {
+    .slider-label {
+        margin-bottom: 0.5rem;
+    }
+
+    #fps-control,
+    #box-size-control {
+        display: block;
+    }
+
+    .slider-control input {
+        margin: 0;
+    }
+
+    #box-effect button:hover .button-tip-text {
+        visibility: hidden;
+    }
+
+    #fps-slider,
+    #box-size {
+        margin-left: 0;
+    }
+
+    button#joystick-button {
+        display: none;
+    }
+}
+
+
+.stroke-on {
+    text-decoration: line-through;
+}
+
+#no-stroke-button {
+    width: 130px;
+    box-sizing: content-box;
+}
+
+.invert-on {
+    color: white;
+    background-color: #212529 !important;
+    border: 5px white solid !important;
+}
+
+button#neighbor-color-button.active,
+button#stable-color-button.active,
+button#circle-button.active,
+button#star-button.active {
+    background-color: #198754;
+    border-color: #198754;
+    color: white;
+}
+
+/* .button-tip-text {
+    visibility: hidden;
+    background-color: rgb(175, 175, 175);
+    color: black;
+    text-align: center;
+    padding: 5px 1rem;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    text-transform: none;
+    bottom: 55px;
+    left: 50%;
+    width: 300px;
+    white-space: normal;
+    text-align: justify;
+    margin-left: -150px;
+    font-size: 16px;
+
+} */
+
+/* .button-tip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgb(175, 175, 175) transparent transparent transparent;
+} */
+
+/* #box-effect button:hover .button-tip-text {
+    visibility: visible;
+} */
+
+.button-title {
+    display: inline-block;
+    position: relative;
+}
+
+.gameplay-buttons button {
+    width: 50px;
+    font-size: 18px;
+
+}
+
+#input-button i {
+    font-size: 24px;
+}
+
+#box-color,
+#canvas-color,
+#stroke-color {
+    height: 31px;
+}
+
+#input-button .button-tip-text {
+    bottom: 70px;
+    margin-left: -160px;
+}
+
+#score-display {
+    position: absolute;
+    right: 5rem;
+    visibility: hidden;
+}
+
+#joystick-button>img {
+    height: 40px;
+    box-sizing: content-box;
+}
+
+#score-display.active {
+    visibility: visible;
+}
+
+/* button hover text tip */
+
+#joystick-button::before {
+    content: 'Enable game mode, points for boxes living 2 rounds, points for boxes living 4 rounds or more ';
+
+    position: absolute;
+    bottom: 80px;
+    background-color: rgb(175, 175, 175);
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 1;
+    visibility: hidden;
+}
+
+#joystick-button::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 70px;
+    background-color: rgb(175, 175, 175);
+    transform: rotateZ(45deg);
+    visibility: hidden;
+}
+
+#neighbor-color-button::before {
+    content: 'Boxes with more neighbors will be darker';
+    position: absolute;
+    bottom: 80px;
+    background-color: rgb(175, 175, 175);
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 1;
+    visibility: hidden;
+}
+
+#neighbor-color-button::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 70px;
+    background-color: rgb(175, 175, 175);
+    transform: rotateZ(45deg);
+    visibility: hidden;
+}
+
+#stable-color-button::before {
+    content: 'Boxes living more than 3 rounds will be darker';
+    position: absolute;
+    bottom: 80px;
+    background-color: rgb(175, 175, 175);
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 1;
+    visibility: hidden;
+}
+
+#stable-color-button::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 70px;
+    background-color: rgb(175, 175, 175);
+    transform: rotateZ(45deg);
+    visibility: hidden;
+}
+
+#input-button::before {
+    content: 'Click a box to select starting box, use WASD to move, press Enter to give/remove live, press P to play';
+    position: absolute;
+    bottom: 80px;
+    background-color: rgb(175, 175, 175);
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 1;
+    visibility: hidden;
+}
+
+#input-button::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 70px;
+    background-color: rgb(175, 175, 175);
+    transform: rotateZ(45deg);
+    visibility: hidden;
+}
+
+#joystick-button:hover#joystick-button::after,
+#joystick-button:hover#joystick-button::before,
+#neighbor-color-button:hover#neighbor-color-button::after,
+#neighbor-color-button:hover#neighbor-color-button::before,
+#stable-color-button:hover#stable-color-button::after,
+#stable-color-button:hover#stable-color-button::before,
+#input-button:hover#input-button::after,
+#input-button:hover#input-button::before {
+    visibility: visible;
+    text-transform: none;
+}

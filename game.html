@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5.1 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- CSS icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <!-- my own CSS -->
+    <link rel="stylesheet" href="game.css" />
+
+    <title>Game of Life</title>
+    <link rel="icon" type="image/x-icon" href="media/rubik-color.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="top-bar">
+            <div class="container-fluid py-1 bg-dark">
+                <div id="title-bar" class="d-flex align-items-center fs-2">
+                    <a href="game.html"> <img src="media/rubik-color.png" alt=""> <span id="title" class="mx-2">Game of
+                            Life</span> <img src="media/rubik-color.png" alt="">
+                    </a>
+                    <div id="score-display">Score: <span id="score">0</span></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="canvas" class="bg-dark"></div>
+
+        <div class="footer">
+            <div class="container-fluid game-control bg-dark">
+                <div class="row">
+                    <div class="col-12 col-lg">
+                        <div class="btn-group gameplay-buttons">
+                            <button id="reset-game" type="button" class="btn btn-danger"><i
+                                    class="bi bi-power"></i></button>
+                            <button id="pause" type="button" class="btn btn-warning"><i
+                                    class="bi bi-pause"></i></button>
+                            <button id="start" type="button" class="btn btn-success"><i
+                                    class="bi bi-play-fill"></i></button>
+                            <button id="next" type="button" class="btn btn-info"><i
+                                    class="bi bi-skip-end-fill"></i></button>
+                            <button id="random-generate" type="button" class="btn btn-primary"><i
+                                    class="bi bi-shuffle"></i></button>
+                        </div>
+
+                    </div>
+                    <div class="col my-auto">
+                        <div id="fps-control" class="slider-control">
+                            <div class="slider-label">
+                                <label for="fps-slider">FPS:</label>
+                                <span id="fps-output"></span>
+                            </div>
+                            <input type="range" min="1" max="60" value="10" id="fps-slider">
+                        </div>
+
+                        <div id="box-size-control" class="slider-control ">
+                            <div class="slider-label">
+                                <label for="box-size">Boxes Per Column:</label>
+                                <span id="box-size-output"></span>
+                            </div>
+                            <input type="range" min="10" max="200" value="30" step="5" id="box-size">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="color-control" class="row">
+                    <div class="col-sm-12 col-md d-flex align-items-center">
+                        <label for="box-color">Box Color:</label>
+                        <input type="color" id="box-color" value="#969696">
+                        <button id="random-box-color" type="button"
+                            class="d-flex justify-content-center align-items-center"><i
+                                class="bi bi-shuffle"></i></button>
+                    </div>
+                    <div class="col-sm-12 col-md d-flex align-items-center">
+
+                        <label for="canvas-color">Canvas Color:</label>
+                        <input type="color" id="canvas-color" value="#ffffff">
+                        <button id="random-canvas-color" type="button"
+                            class="d-flex justify-content-center align-items-center"><i
+                                class="bi bi-shuffle"></i></button>
+
+                    </div>
+                    <div class="col-sm-12 col-md d-flex align-items-center">
+                        <label for="stroke-color">Stroke Color:</label>
+                        <input type="color" id="stroke-color" value="#323232">
+                        <button id="random-stroke-color" type="button"
+                            class="d-flex justify-content-center align-items-center"><i
+                                class="bi bi-shuffle"></i></button>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex ">
+                        <div id="box-effect" class="btn-group flex-wrap">
+                            <button id="rainbow-color-button" type="button" class="rainbow-button">Rainbow Box
+                                Color</button>
+                            <button id="no-stroke-button" type="button" class="">Box Stroke On</button>
+                            <button id="random-color-button" type="button" class="">Random Box Color</button>
+                            <button id="invert-color-button" type="button" class="">Invert Color</button>
+                            <button id="neighbor-color-button" type="button" class="">
+                                <div class="button-title">
+                                    Highlight Neighbors
+
+                                </div>
+
+                            </button>
+                            <button id="stable-color-button" type="button" class="">
+                                <div class="button-title">
+                                    Stable Life
+
+                                </div>
+
+                            </button>
+                            <button id="circle-button" type="button" class="">Circle</button>
+                            <!-- <button id="star-button" type="button" class="">Star</button> -->
+                            <button id="input-button" type="button" class="button-title">
+                                <div class="input-button-icon">
+                                    <i class="bi bi-mouse"></i>
+                                </div>
+
+
+                                <button id="joystick-button" type="button" class=""><img src="media/joystick.gif"
+                                        alt=""></button>
+                                <!-- <span class="button-tip-text">
+                                    Board will reset will no life, cells living 2 rounds will give 2 points, cells
+                                    living more than 3 rounds will give 3 points. When a cell dies, it will deduct all
+                                    the points it had gained.
+                                </span> -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <!-- p5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a186d0ec57.js" crossorigin="anonymous"></script>
+
+    <!-- my own JS -->
+    <script src="game.js"></script>
+</body>
+
+</html>
